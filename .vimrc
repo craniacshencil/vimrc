@@ -1,3 +1,6 @@
+"Set Colorscheme"
+set termguicolors
+colorscheme warlock-contrast
 " Comments in Vimscript start with a `"`.
 
 " If you open this file in Vim, it'll be syntax highlighted for you.
@@ -78,9 +81,11 @@ inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
 "mapping insert mode ot kj and also command mode to kj
 inoremap kj <Esc>
 cnoremap kj <Esc>
+vnoremap kj <Esc>
 "Setting default tab size to 4"
 set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
@@ -93,6 +98,7 @@ set softtabstop=4   " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 set autoindent      " Auto indentation is on 
+
 "Adding closing braces and quotes automatically
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -102,13 +108,11 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
-"Add monokai theme
-syntax enable
-colorscheme monokai
+
 " Commenting blocks of code.
 augroup commenting_blocks_of_code
   autocmd!
-  autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
+  autocmd FileType c,cpp,java,scala,js let b:comment_leader = '// '
   autocmd FileType sh,ruby,python   let b:comment_leader = '# '
   autocmd FileType conf,fstab       let b:comment_leader = '# '
   autocmd FileType tex              let b:comment_leader = '% '
@@ -117,4 +121,3 @@ augroup commenting_blocks_of_code
 augroup END
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
-
