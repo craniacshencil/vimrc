@@ -12,7 +12,7 @@
 
 ## Setup
 Run `setup.sh` to automatically setup themes and vimrc using: 
-
+This script only works for Debian based distros
 ```bash
 bash setup.sh
 ```

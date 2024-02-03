@@ -2,9 +2,36 @@ vimpath="$HOME/.vim"
 colorpath="$HOME/.vim/colors"
 vimrcpath="$HOME/.vimrc"
 
+# ================VIM PART==================
+echo "REMINDER: this script only works on Debian(like ubuntu) based systems"
+echo ""
+echo "Do you want to install vim?"
+echo "[A]Already have it installed"
+echo "[B]Yes please(Choose this if you dont' know whether vim is installed on your machine)"
+echo "Enter your choice: [A/B]"
+read vimChoice
 
+# Keep asking for choice if something other than A or B is entered
+while [[ "$vimChoice" != "A" ]] && [[ "$vimChoice" != "B" ]] 
+do
+    echo "Enter your choice: [A/B]"
+    read vimChoice 
+done
+
+#If option A is chosen
+if [ "$vimChoice" = "A" ]
+then
+    echo "Skipping vim installation..."
+
+#If option B is chosen
+elif [ "$vimChoice" = "B" ]
+then
+    echo "Installing vim for you..."
+    sudo apt install -y vim
+fi
 
 # ================COLORS PART===============
+echo ""
 # Checking if .vim folder exists in home
 if [ -d "$vimpath" ]
 then
@@ -26,7 +53,7 @@ then
             echo "Enter your choice: [A/B/C]"
             read colorsChoice
         done
-
+        echo ""
 # If option A is chosen
         if [ "$colorsChoice" = "A" ]
         then
@@ -67,6 +94,7 @@ fi
 
 
 # ===============.VIMRC PART===============
+echo ""
 if [ -f "$vimrcpath" ]
 then
     echo "File .vimrc exists"
@@ -98,12 +126,13 @@ then
         echo "Repo's vimrc has not been setup..."
     fi
 
-#Contorl enters here if .vimrc did not exist initially
+#Control enters here if .vimrc did not exist initially
 else
    echo "File .vimrc does not exist..."
    cp .vimrc $HOME/
    echo "Repo's vimrc has been setup..."
 fi
+echo ""
 echo "******************************"
 echo "Script executed succesfully..."
 echo "******************************"
