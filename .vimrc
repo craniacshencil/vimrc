@@ -127,3 +127,11 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+"Add underlilne whenever in insert mode
+:autocmd InsertEnter * set cursorline
+:autocmd InsertLeave * set nocursorline
+
+"Change shape of cursor when leaving or entering insert mode 
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
